@@ -11,20 +11,21 @@ pprint(obs.header)
 print(obs.data.shape)
 
 my_dpi=200
+full_screen_dims=(3456 / my_dpi, 2234 / my_dpi)
 # plot the entire power spectrum collected
-plt.figure(figsize=(3456/my_dpi, 2234/my_dpi), dpi=my_dpi)
+plt.figure(figsize=full_screen_dims, dpi=my_dpi)
 obs.plot_spectrum()
 plt.xticks(rotation=-45, ha="left")
 plt.title("full spectrum")
 plt.savefig('spectrum.png')
 
-plt.figure(figsize=(3456/my_dpi, 2234/my_dpi), dpi=my_dpi)
+plt.figure(figsize=full_screen_dims, dpi=my_dpi)
 obs.plot_waterfall(f_start=8420.193, f_stop=8420.24, logged=True)
 plt.title("waterfall")
 plt.savefig('waterfall.png')
 
 # plot a narrow area around frequency of interest
-plt.figure(figsize=(8, 6))
+plt.figure(figsize=full_screen_dims)
 plt.subplot(3,1,1)
 plt.xticks(rotation=-45, ha="left")
 obs.plot_spectrum(f_start=8420.193, f_stop=8420.195) # left sideband
